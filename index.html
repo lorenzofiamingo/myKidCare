@@ -116,5 +116,29 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <script src="script.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCcZ9tXnrkh1pD5Qo-f1iFXCmnBPcUgMTg",
+        authDomain: "mykid-care.firebaseapp.com",
+        databaseURL: "https://mykid-care.firebaseio.com",
+        projectId: "mykid-care",
+        storageBucket: "mykid-care.appspot.com",
+        messagingSenderId: "765572169284",
+        appId: "1:765572169284:web:495dd0ad14807eb3f04611",
+        measurementId: "G-R7MVRY2K87"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+</script>
   </body>
 </html>
