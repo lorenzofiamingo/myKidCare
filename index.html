@@ -22,14 +22,15 @@
 
     <header>
       <nav class="navbar navbar-expand-md navbar-light bg-light">
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLink" aria-controls="navbarsLink" aria-expanded="false" aria-label="Toggle Navigation">
-          <i class="fas fa-bars"></i>
-        </button>
+        <span class="btn-group" data-toggle="button">
+          <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#navbarLink" aria-controls="navbarsLink" aria-expanded="false" aria-label="Toggle Navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+        </span>
         <a class="navbar-brand" href="#">
           <h1>MyKidCare</h1>
         </a>
-        <a href="#" class="btn btn-sm btn-outline-primary d-md-none">Login</a>
+        <a href="#" class="btn btn-outline-primary d-md-none">Login</a>
 
         <div class="collapse navbar-collapse" id="navbarLink">
           <ul class="navbar-nav mr-auto">
@@ -68,18 +69,23 @@
         <div class="container">
 
           <nav class="navbar navbar-expand-md navbar-light bg-light px-0 py-3">
-            <form class="form-inline">
-              <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle Search">
-                <i class="fas fa-search"></i>
-              </button>
-              <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarFilter" aria-controls="navbarFilter" aria-expanded="false" aria-label="Toggle Filter">
-                <i class="fas fa-sliders-h"></i>
-              </button>
-            </form>
+
             <div class="btn-group d-md-none">
-              <button type="button" class="btn btn-sm btn-outline-secondary active"><i class="fas fa-th-large"></i> Griglia</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-list-ul"></i> Lista</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-map-marked"></i> Mappa</button>
+              <span class="btn-group" data-toggle="button">
+                <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle Search">
+                  <i class="fas fa-search"></i>
+                </button>
+              </span>
+              <span class="btn-group" data-toggle="button">
+                <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#navbarFilter" aria-controls="navbarFilter" aria-expanded="false" aria-label="Toggle Filter">
+                  <i class="fas fa-sliders-h"></i>
+                </button>
+              </span>
+            </div>
+            <div class="btn-group d-md-none">
+              <button type="button" class="btn btn-outline-secondary active"><i class="fas fa-th-large"></i> Griglia</button>
+              <button type="button" class="btn btn-outline-secondary"><i class="fas fa-list-ul"></i> Lista</button>
+              <button type="button" class="btn btn-outline-secondary"><i class="fas fa-map-marked"></i> Mappa</button>
             </div>
             <div class="collapse navbar-collapse" id="navbarSearch">
               <form class="form-inline my-2 my-md-0 mt-4">
@@ -162,7 +168,7 @@
                     <label class="custom-control-label" for="customCheck1">Anaritmia</label>
                   </div>
                 </fieldset>
-                <input type="submit" value="Aggiorna">
+                <input class="btn btn-secondary btn-lg btn-block" type="submit" value="Applica filtri">
               </form>
             </div>
 
@@ -247,7 +253,7 @@
                     <label class="custom-control-label" for="customCheck1">Anaritmia</label>
                   </div>
                 </fieldset>
-                <input type="submit" value="Aggiorna">
+                <input class="btn btn-secondary btn-block" type="submit" value="Applica filtri">
               </form>
             </div>
             <div class="col col-md-9">
