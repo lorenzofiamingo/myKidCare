@@ -99,9 +99,9 @@
                     <h6 class="mt-3 mb-0">PREZZO</h6>
                   </legend>
                   <div class="input-group mb-3">
-                    <input class="form-control" type="text" id="amount" readonly>
+                    <input class="form-control amount" type="text" readonly>
                   </div>
-                  <div id="slider-range"></div>
+                  <div class="slider-range"></div>
                 </fieldset>
                 <fieldset class="my-4">
                   <legend>
@@ -184,9 +184,9 @@
                     <h6 class="mt-3 mb-0">PREZZO</h6>
                   </legend>
                   <div class="input-group mb-3">
-                    <input class="form-control" type="text" id="amount" readonly>
+                    <input class="form-control amount" type="text" readonly>
                   </div>
-                  <div id="slider-range"></div>
+                  <div class="slider-range"></div>
                 </fieldset>
                 <fieldset class="my-4">
                   <legend>
@@ -335,7 +335,7 @@
     </main>
 
     <footer class="text-muted">
-      <div class="container">
+      <div class="container py-4 pt-5">
         <p class="float-right">
           <a href="#">Back to top</a>
         </p>
@@ -379,17 +379,17 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
       $(function() {
-        $("#slider-range").slider({
+        $(".slider-range").slider({
           range: true,
           min: 0,
           max: 200,
           values: [0, 200],
           slide: function(event, ui) {
-            $("#amount").val("€" + ui.values[0] + " - €" + ui.values[1]);
+            $(".amount").val("€" + ui.values[0] + " - €" + ui.values[1]);
           }
         });
-        $("#amount").val("$" + $("#slider-range").slider("values", 0) +
-          " - $" + $("#slider-range").slider("values", 1));
+        $(".amount").val("$" + $(".slider-range").slider("values", 0) +
+          " - $" + $(".slider-range").slider("values", 1));
       });
     </script>
   </body>
