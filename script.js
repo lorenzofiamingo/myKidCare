@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $(".toggle").click(function() {
+  $(".toggle").one(function() {
     $(this).toggleClass("active");
   });
 
