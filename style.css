@@ -1,0 +1,4 @@
+*:focus,*:active:focus,*.active:focus,
+*.focus,*:active.focus,*.active.focus {
+  box-shadow: none  !important;
+}
