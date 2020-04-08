@@ -1,6 +1,8 @@
 $(document).ready(function() {
-  $(".toggle").one(function() {
-    $(this).toggleClass("active");
+  $(".toggle").click(function() {
+    if (!$($(this).data("target")).hasClass("collapsing")) {
+      $(this).toggleClass("active");
+    }
   });
 
   function hasTouch() {
