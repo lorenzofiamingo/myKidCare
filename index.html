@@ -1,52 +1,50 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>MyKidCare</title>
-  </head>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+
+  <link rel="stylesheet" href="style.css">
+
+  <title>MyKidCare</title>
+</head>
+
+<body>
+
   <body>
-    <body>
 
     <header>
       <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLink" aria-controls="navbarsLink" aria-expanded="false" aria-label="Toggle Navigation">
-        <i class="fas fa-bars"></i>
-      </button>
-      <a class="navbar-brand" href="#">MyKidCare</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle Search">
-        <i class="fas fa-search"></i>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navbarLink">
-        <ul class="navbar-nav mr-auto">
-          <spacer></spacer>
-          <li class="nav-item active">
-            <a class="nav-link nav-login" href="#">Accedi</a>
-          </li>
-          <spacer></spacer>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Informazioni</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contattaci</a>
-          </li>
-        </ul>
-      </div>
-      <div class="collapse navbar-collapse" id="navbarSearch">
-        <form class="form-inline my-2 my-md-0">
-          <input class="form-control" type="text" placeholder="Indirizzo, Città, CAP...">
-        </form>
-      </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLink" aria-controls="navbarsLink" aria-expanded="false" aria-label="Toggle Navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="#">
+          <h1>MyKidCare</h1>
+        </a>
+        <a href="#" class="btn btn-sm btn-outline-primary d-md-none">Login</a>
+
+        <div class="collapse navbar-collapse" id="navbarLink">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Informazioni</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contattaci</a>
+            </li>
+          </ul>
+        </div>
+        <a href="#" class="btn btn-sm btn-outline-primary d-none d-md-block">Login</a>
       </nav>
     </header>
 
@@ -54,7 +52,7 @@
 
       <section class="jumbotron text-center">
         <div class="container">
-          <h1 class="jumbotron-heading">Prenota una babysitter o lezioni private direttamente online</h1>
+          <h1 class="jumbotron-heading">Prenota babysitter e lezioni private online</h1>
           <p class="lead text-muted">Se stai cercando babysitter o insegnanti telematici affidabili, con esperienza e con grandi capacità questo è il posto giusto.</p>
 
           <p>
@@ -64,39 +62,273 @@
         </div>
       </section>
 
-      <div class="py-5 bg-light">
+      <div class="py-1 bg-light">
+
+
         <div class="container">
 
+          <nav class="navbar navbar-expand-md navbar-light bg-light px-0 py-3">
+            <form class="form-inline">
+              <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle Search">
+                <i class="fas fa-search"></i>
+              </button>
+              <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarFilter" aria-controls="navbarFilter" aria-expanded="false" aria-label="Toggle Filter">
+                <i class="fas fa-sliders-h"></i>
+              </button>
+            </form>
+            <div class="btn-group d-md-none">
+              <button type="button" class="btn btn-sm btn-outline-secondary active"><i class="fas fa-th-large"></i> Griglia</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-list-ul"></i> Lista</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-map-marked"></i> Mappa</button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSearch">
+              <form class="form-inline my-2 my-md-0 mt-4">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-map-pin"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Indirizzo" aria-label="Indirizzo" aria-describedby="basic-addon1">
+                </div>
+              </form>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarFilter">
+              <form class="d-md-none" action="index.html" method="post">
+
+                <fieldset class="my-4">
+                  <legend>
+                    <h6 class="mt-3 mb-0">PREZZO</h6>
+                  </legend>
+                  <div class="input-group mb-3">
+                    <input class="form-control" type="text" id="amount" readonly>
+                  </div>
+                  <div id="slider-range"></div>
+                </fieldset>
+                <fieldset class="my-4">
+                  <legend>
+                    <h6 class="mt-3 mb-0">ESPERIENZA</h6>
+                  </legend>
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio1">&lt; 1 anno</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio2">1-2 anni</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio3">&gt;2 anni</label>
+                  </div>
+                </fieldset>
+                <fieldset class="my-4">
+                  <legend>
+                    <h6 class="mt-3 mb-0">MATERIE</h6>
+                  </legend>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Matematica</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Italiano</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Storia</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Inglese</label>
+                  </div>
+                </fieldset>
+                <fieldset class="my-4">
+                  <legend>
+                    <h6 class="mt-3 mb-0">DISTURBI DELL'APPRENDIMENTO</h6>
+                  </legend>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Dislessia</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Discalculia</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Disgrafia</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Anaritmia</label>
+                  </div>
+                </fieldset>
+                <input type="submit" value="Aggiorna">
+              </form>
+            </div>
+
+
+            <div class="btn-group d-none d-md-block">
+              <button type="button" class="btn btn-outline-secondary active"><i class="fas fa-th-large"></i> Griglia</button>
+              <button type="button" class="btn btn-outline-secondary"><i class="fas fa-list-ul"></i> Lista</button>
+              <button type="button" class="btn btn-outline-secondary"><i class="fas fa-map-marked"></i> Mappa</button>
+            </div>
+          </nav>
+
           <div class="row">
-              <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                  <img class="img-fluid" src="https://img.lapresse.it/2020/04/02/112639368-4b9ca392-cb14-4275-8096-7caedbc06fb0.png" alt="">
-                  <div class="card-body">
-                    <p class="card-text">Sono bravissima con i bambini.</p>
-                    <small class="text-muted">€10 / ora</small>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Samantha Lopez</button>
+            <div class="col-3 my-3 d-none d-md-block">
+              <h3 class="text-muted">Filtri</h3>
+              <form class="" action="index.html" method="post">
+
+                <fieldset class="my-4">
+                  <legend>
+                    <h6 class="mt-3 mb-0">PREZZO</h6>
+                  </legend>
+                  <div class="input-group mb-3">
+                    <input class="form-control" type="text" id="amount" readonly>
+                  </div>
+                  <div id="slider-range"></div>
+                </fieldset>
+                <fieldset class="my-4">
+                  <legend>
+                    <h6 class="mt-3 mb-0">ESPERIENZA</h6>
+                  </legend>
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio1">&lt; 1 anno</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio2">1-2 anni</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio3">&gt;2 anni</label>
+                  </div>
+                </fieldset>
+                <fieldset class="my-4">
+                  <legend>
+                    <h6 class="mt-3 mb-0">MATERIE</h6>
+                  </legend>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Matematica</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Italiano</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Storia</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Inglese</label>
+                  </div>
+                </fieldset>
+                <fieldset class="my-4">
+                  <legend>
+                    <h6 class="mt-3 mb-0">DISTURBI DELL'APPRENDIMENTO</h6>
+                  </legend>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Dislessia</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Discalculia</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Disgrafia</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Anaritmia</label>
+                  </div>
+                </fieldset>
+                <input type="submit" value="Aggiorna">
+              </form>
+            </div>
+            <div class="col col-md-9">
+
+              <div class="row my-3">
+
+                <div class="col-md-6 col-lg-4">
+                  <div class="card mb-4 box-shadow">
+                    <img class="img-fluid" src="https://img.lapresse.it/2020/04/02/112639368-4b9ca392-cb14-4275-8096-7caedbc06fb0.png" alt="">
+                    <div class="card-body">
+                      <p class="card-text">Sono bravissima con i bambini.</p>
+                      <small class="text-muted">€10 / ora</small>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Samantha Lopez</button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                  <img class="img-fluid" src="https://i0.wp.com/sugarmummyline.net/wp-content/uploads/2019/07/45-Cute-Selfie-Poses-for-Girls-to-Look-Super-Awesome-42.jpg" alt="">
-                  <div class="card-body">
-                    <p class="card-text">Sono bravissima con i bambini.</p>
-                    <small class="text-muted">€10 / ora</small>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Samantha Lopez</button>
+                <div class="col-md-6 col-lg-4">
+                  <div class="card mb-4 box-shadow">
+                    <img class="img-fluid" src="https://img.lapresse.it/2020/04/02/112639368-4b9ca392-cb14-4275-8096-7caedbc06fb0.png" alt="">
+                    <div class="card-body">
+                      <p class="card-text">Sono bravissima con i bambini.</p>
+                      <small class="text-muted">€10 / ora</small>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Samantha Lopez</button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <div class="col-md-6 col-lg-4">
+                  <div class="card mb-4 box-shadow">
+                    <img class="img-fluid" src="https://img.lapresse.it/2020/04/02/112639368-4b9ca392-cb14-4275-8096-7caedbc06fb0.png" alt="">
+                    <div class="card-body">
+                      <p class="card-text">Sono bravissima con i bambini.</p>
+                      <small class="text-muted">€10 / ora</small>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Samantha Lopez</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                  <div class="card mb-4 box-shadow">
+                    <img class="img-fluid" src="https://img.lapresse.it/2020/04/02/112639368-4b9ca392-cb14-4275-8096-7caedbc06fb0.png" alt="">
+                    <div class="card-body">
+                      <p class="card-text">Sono bravissima con i bambini.</p>
+                      <small class="text-muted">€10 / ora</small>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Samantha Lopez</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                  <div class="card mb-4 box-shadow">
+                    <img class="img-fluid" src="https://img.lapresse.it/2020/04/02/112639368-4b9ca392-cb14-4275-8096-7caedbc06fb0.png" alt="">
+                    <div class="card-body">
+                      <p class="card-text">Sono bravissima con i bambini.</p>
+                      <small class="text-muted">€10 / ora</small>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Samantha Lopez</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
+            </div>
           </div>
+
         </div>
       </div>
 
@@ -141,6 +373,25 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
-</script>
+    </script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      $(function() {
+        $("#slider-range").slider({
+          range: true,
+          min: 0,
+          max: 200,
+          values: [0, 200],
+          slide: function(event, ui) {
+            $("#amount").val("€" + ui.values[0] + " - €" + ui.values[1]);
+          }
+        });
+        $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+          " - $" + $("#slider-range").slider("values", 1));
+      });
+    </script>
   </body>
+
 </html>
