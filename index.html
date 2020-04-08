@@ -21,19 +21,19 @@
   <body>
 
     <header>
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <span class="btn-group d-md-none">
+      <nav class="navbar navbar-expand-md navbar-light bg-light text-xs-center">
+        <span class="btn-group d-md-none order-1">
           <button class="btn btn-outline-secondary toggle" type="button" data-toggle="collapse" data-target="#navbarLink" aria-controls="navbarsLink" aria-expanded="false" aria-label="Toggle Navigation">
             <i class="fas fa-bars"></i>
           </button>
         </span>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand order-2 mx-auto" href="#">
           <h1>MyKidCare</h1>
         </a>
-        <a href="#" class="btn btn-outline-primary d-md-none">Login</a>
+        <a href="#" class="btn btn-outline-primary order-3 order-md-5">Login</a>
 
-        <div class="collapse navbar-collapse" id="navbarLink">
-          <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse order-4" id="navbarLink">
+          <ul class="navbar-nav mr-auto ml-5">
             <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -45,20 +45,23 @@
             </li>
           </ul>
         </div>
-        <a href="#" class="btn btn-sm btn-outline-primary d-none d-md-block">Login</a>
       </nav>
     </header>
 
     <main role="main">
 
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Prenota babysitter e lezioni private online</h1>
-          <p class="lead text-muted">Se stai cercando babysitter o insegnanti telematici affidabili, con esperienza e con grandi capacità questo è il posto giusto.</p>
+      <section class="jumbotron text-center embed-responsive">
+        <video class="embed-responsive-item" autoplay muted loop poster="Media/jumbotron-poster.jpg">
+
+            <source src="Media/jumbotron-all-hq.mp4" type="video/mp4">
+        </video>
+        <div class="container py-5">
+          <h1 class="jumbotron-heading text-light min-vh-50">Prenota babysitter e lezioni private online</h1>
+          <p class="lead text-light">Se stai cercando babysitter o insegnanti telematici affidabili, con esperienza e con grandi capacità questo è il posto giusto.</p>
 
           <p>
-            <a href="#" class="btn btn-primary my-2">Registrati</a>
-            <a href="#" class="btn btn-secondary my-2">Login</a>
+            <a href="#" class="btn btn-lg btn-primary my-2">Registrati</a>
+            <a href="#" class="btn btn-lg btn-secondary my-2">Login</a>
           </p>
         </div>
       </section>
@@ -76,7 +79,7 @@
                   <i class="fas fa-search"></i>
                 </button>
               </span>
-              <span class="btn-group" >
+              <span class="btn-group">
                 <button class="btn btn-sm btn-outline-secondary toggle" type="button" data-toggle="collapse" data-target="#navbarFilter" aria-controls="navbarFilter" aria-expanded="false" aria-label="Toggle Filter">
                   <i class="fas fa-sliders-h"></i>
                 </button>
@@ -107,7 +110,7 @@
                   <div class="input-group mb-3">
                     <input class="form-control amount" type="text" readonly>
                   </div>
-                  <div class="slider-range"></div>
+                  <div class="slider-range mx-2"></div>
                 </fieldset>
                 <fieldset class="my-4">
                   <legend>
@@ -192,7 +195,7 @@
                   <div class="input-group mb-3">
                     <input class="form-control amount" type="text" readonly>
                   </div>
-                  <div class="slider-range"></div>
+                  <div class="slider-range mx-2"></div>
                 </fieldset>
                 <fieldset class="my-4">
                   <legend>
