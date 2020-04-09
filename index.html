@@ -96,6 +96,9 @@
 
         <div class="container">
 
+          <div id="sign-in-status"></div>
+          <div id="sign-in"></div>
+          <pre id="account-details"></pre>
 
           <nav class="navbar navbar-expand-md navbar-light bg-light px-0 py-3">
 
@@ -488,10 +491,6 @@
             $("#loginClose").trigger("click");
             var db = firebase.firestore();
             var userDocument = db.collection('users').doc(uid);
-
-
-
-
             user.getIdToken().then(function(accessToken) {
               document.getElementById('sign-in-status').textContent = 'Signed in';
               document.getElementById('sign-in').textContent = 'Sign out';
