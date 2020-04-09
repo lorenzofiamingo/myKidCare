@@ -33,10 +33,33 @@
         <a class="navbar-brand order-2 mx-auto" href="#">
           <h1>MyKidCare</h1>
         </a>
-        <a href="#" class="btn btn-outline-primary order-3 order-md-5" data-toggle="modal" data-target="#loginModal">Login</a>
+        <div id="userInfo" class="order-3 order-md-5">
+
+          <div class="d-none d-signed">
+            <div class="btn-group">
+              <button type="button" class="btn btn-outline-primary">
+                Ciao, Lorenzo!
+              </button>
+              <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              </button>
+              <div class="dropdown-menu dropdown-menu-right">
+                <button class="dropdown-item" type="button">Area Utente</button>
+                <button class="dropdown-item" type="button">Pubblica il tuo annuncio</button>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-item text-danger" type="button" onclick="firebase.auth().signOut()">Logout</button>
+              </div>
+            </div>
+          </div>
+          <div class="d-none d-unsigned">
+            <div class="btn-group">
+              <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#loginModal">Login</a>
+              <a href="#" class="btn btn-outline-info d-none d-sm-block" data-toggle="modal" data-target="#loginModal">Pubblica il tuo annuncio</a>
+            </div>
+          </div>
+        </div>
 
         <div class="collapse navbar-collapse order-4" id="navbarLink">
-          <ul class="navbar-nav mr-auto ml-5">
+          <ul class="navbar-nav mr-auto ml-3 ml-lg-5">
             <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -52,8 +75,8 @@
     </header>
 
     <main role="main">
-
-      <section class="jumbotron text-center embed-responsive">
+      <!-- JUMBOTRON -->
+      <section class="jumbotron text-center embed-responsive d-unsigned d-none ">
         <video class="embed-responsive-item" autoplay muted loop poster="Media/jumbotron-poster.jpg">
           <!-- <source src="https://firebasestorage.googleapis.com/v0/b/mk-care.appspot.com/o/jumbotron-all-hq.mp4?alt=media&token=ad71433d-3575-4a87-8965-9f6f52299c4b" type="video/mp4"> -->
           <source src="Media/jumbotron-all-lq.mp4" type="video/mp4">
@@ -72,6 +95,7 @@
 
 
         <div class="container">
+
 
           <nav class="navbar navbar-expand-md navbar-light bg-light px-0 py-3">
 
@@ -354,18 +378,18 @@
       </div>
 
       <!-- Modal Login/Register -->
-      <div class="modal fade" id="loginModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
+      <div id="loginModal" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content min-vh-50">
             <div class="modal-header">
               <h5 class="modal-title" id="staticBackdropLabel">Login</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button id="loginClose" type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              <div id="firebaseui-auth-container"></div>
-              <div id="loader">
+            <div class="modal-body row">
+              <div id="firebaseui-auth-container" class="mx-auto align-self-center"></div>
+              <div id="loader" class="mx-auto align-self-center">
                 <div class="progress">
                   <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                 </div>
@@ -391,6 +415,7 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
 
     <script>
@@ -411,19 +436,21 @@
 
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
       var uiConfig = {
-        callbacks: {
-          signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-            // User successfully signed in.
-            // Return type determines whether we continue the redirect automatically
-            // or whether we leave that to developer to handle.
-            return true;
-          },
-          uiShown: function() {
-            // The widget is rendered.
-            // Hide the loader.
-            document.getElementById('loader').style.display = 'none';
-          }
+          callbacks: {
+            signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+              // User successfully signed in.
+              //Connect to firestore db.collection("users").document(usser.uuid)
+          // Return type determines whether we continue the redirect automatically
+          // or whether we leave that to developer to handle.
+          return false;
         },
+        uiShown: function() {
+          // The widget is rendered.
+          // Hide the loader.
+          document.getElementById('loader').style.display = 'none';
+        }
+      },
+      credentialHelper: firebaseui.auth.CredentialHelper.NONE,
         // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
         signInFlow: 'popup',
         //signInSuccessUrl: '<url-to-redirect-to-on-success>',
@@ -434,30 +461,69 @@
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         ],
         // Terms of service url.
-        tosUrl: '<your-tos-url>',
+        //tosUrl: '<your-tos-url>',
         // Privacy policy url.
-        privacyPolicyUrl: '<your-privacy-policy-url>'
+        //privacyPolicyUrl: '<your-privacy-policy-url>'
       };
-      // The start method will wait until the DOM is loaded.
-      ui.start('#firebaseui-auth-container', uiConfig);
     </script>
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-      $(function() {
-        $(".slider-range").slider({
-          range: true,
-          min: 0,
-          max: 100,
-          values: [0, 100],
-          step: 10,
-          slide: function(event, ui) {
-            $(".amount").val("€" + ui.values[0] + " - €" + ui.values[1]);
+    <script type="text/javascript">
+      initApp = function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var uid = user.uid;
+            var phoneNumber = user.phoneNumber;
+            var providerData = user.providerData;
+            $(".d-signed").removeClass("d-none");
+            $(".d-signed").addClass("d-block");
+            $(".d-unsigned").removeClass("d-block");
+            $(".d-unsigned").addClass("d-none");
+            $("#loginClose").trigger("click");
+            var db = firebase.firestore();
+            var userDocument = db.collection('users').doc(uid);
+
+
+
+
+            user.getIdToken().then(function(accessToken) {
+              document.getElementById('sign-in-status').textContent = 'Signed in';
+              document.getElementById('sign-in').textContent = 'Sign out';
+              document.getElementById('account-details').textContent = JSON.stringify({
+                displayName: displayName,
+                email: email,
+                emailVerified: emailVerified,
+                phoneNumber: phoneNumber,
+                photoURL: photoURL,
+                uid: uid,
+                accessToken: accessToken,
+                providerData: providerData
+              }, null, '  ');
+            });
+          } else {
+            // User is signed out.
+            ui.start('#firebaseui-auth-container', uiConfig);
+            $(".d-signed").removeClass("d-block");
+            $(".d-signed").addClass("d-none");
+            $(".d-unsigned").removeClass("d-none");
+            $(".d-unsigned").addClass("d-block");
+            document.getElementById('sign-in-status').textContent = 'Signed out';
+            document.getElementById('sign-in').textContent = 'Sign in';
+            document.getElementById('account-details').textContent = 'null';
           }
+        }, function(error) {
+          console.log(error);
         });
-        $(".amount").val("$" + $(".slider-range").slider("values", 0) +
-          " - $" + $(".slider-range").slider("values", 1));
+      };
+
+      window.addEventListener('load', function() {
+        initApp();
       });
     </script>
   </body>
