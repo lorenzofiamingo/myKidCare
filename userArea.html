@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+  <script src="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth__it.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.css" />
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="Select/css/bootstrap-select.min.css">
+
+  <link rel="stylesheet" href="style.css">
+
+  <title>MyKidCare</title>
+</head>
+
+<body>
+
+  <body>
+
+
+    <!-- SITE NAVBAR -->
+    <iframe class="invisible" src="header.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+
+    <main role="main">
+      <div class="py-3 bg-light">
+
+        <!-- USERPAGE -->
+        <div class="container min-vh-100 invisible">
+          <h1>Profilo</h1>
+
+          <form id="userForm" action="index.html" method="post">
+            <fieldset class="my-4">
+              <div class="form-group">
+                <label for="firstName">Nome</label>
+                <input type="text" class="form-control" id="firstName" placeholder="Nome">
+              </div>
+              <div class="form-group">
+                <label for="lastName">Cognome</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Cognome">
+              </div>
+              <div class="form-group">
+                <label for="email">Indirizzo email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email">
+                <small id="emailHelp" class="form-text text-muted">Indirizzo email non verificato. <a href="#">Reinvia mail di conferma</a></small>
+              </div>
+            </fieldset>
+            <div class="custom-control custom-switch pb-5">
+              <input id="isWorker" type="checkbox" class="custom-control-input toggle" data-toggle="collapse" data-target=".workerCollapse">
+              <label class="custom-control-label" for="isWorker">Voglio pubblicare i miei annunci</label>
+            </div>
+            <div class="collapse workerCollapse">
+              <fieldset>
+                <div class="form-group">
+                  <label for="experience">Anni di esperirenza</label>
+                  <input type="number" class="form-control" id="experience" min="0" max="99" placeholder="0">
+                </div>
+                <div class="form-group">
+                  <label for="subjects">Materie</label> <br>
+                  <select id="subjects" class="form-control selectpicker" data-live-search="true" data-actions-box="true" data-style="custom-select" multiple>
+                    <optgroup label="Materie Scientifiche">
+                      <option>Matematica</option>
+                      <option>Scienze</option>
+                      <option>Informatica</option>
+                    </optgroup>
+                    <optgroup label="Materie Umanistiche">
+                      <option>Italiano</option>
+                      <option>Storia</option>
+                      <option>Geografia</option>
+                    </optgroup>
+                    <optgroup label="Lingue Straniere">
+                      <option>Inglese</option>
+                      <option>Francese</option>
+                      <option>Spagnolo</option>
+                      <option>Tedesco</option>
+                      <option>Russo</option>
+                      <option>Cinese</option>
+                    </optgroup>
+                  </select>
+                </div>
+                <div class="form-group mb-5">
+                  <label for="learningDisabilities">Competenza con ragazzi con disturbi dell'apprendimento</label> <br>
+                  <select id="learningDisabilities" class="form-control selectpicker" data-style="custom-select" multiple>
+                    <option>Dislessia</option>
+                    <option>Discalculia</option>
+                    <option>Disgrafia</option>
+                    <option>Anaritmia</option>
+                  </select>
+                </div>
+              </fieldset>
+            </div>
+            <div class="container">
+              <div class="row">
+                <button id="button" type="submit" class="btn btn-primary">Salva</button>
+                <div class="ml-3 my-auto">
+                  <h5 id="loading" class="d-none my-auto text-secondary"><i class="fas fa-sync fa-spin"></i></h5>
+                  <h5 id="success" class="d-none my-auto text-success"><i class="fas fa-check-circle"></i></h5>
+                  <h5 id="danger" class="d-none my-auto text-danger"><i class="fas fa-exclamation-circle"></i></h5>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="collapse workerCollapse">
+            <h3 class="mt-5">I tuoi annunci</h3>
+            <div class="row">
+              <div class="col-3 my-3 d-none d-md-block">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <iframe class="invisible" src="footer.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <script src="Select/js/bootstrap-select.min.js"></script>
+    <script src="Select/js/i18n/defaults-it_IT.min.js"></script>
+    <script src="script.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyA1Iymnm0BSJxzJzVauvE9L4cXY4WZk7ZY",
+        authDomain: "mk-care.firebaseapp.com",
+        databaseURL: "https://mk-care.firebaseio.com",
+        projectId: "mk-care",
+        storageBucket: "mk-care.appspot.com",
+        messagingSenderId: "1049139835623",
+        appId: "1:1049139835623:web:d901a503c3d07a10812842",
+        measurementId: "G-Z7WSV71T0X"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+
+    <script type="text/javascript">
+      initApp = function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var uid = user.uid;
+            var phoneNumber = user.phoneNumber;
+            var providerData = user.providerData;
+            $(".d-signed").removeClass("d-none");
+            $(".d-signed").addClass("d-block");
+            $(".d-unsigned").removeClass("d-block");
+            $(".d-unsigned").addClass("d-none");
+            $("#loginClose").trigger("click");
+            var db = firebase.firestore();
+            var userDocument = db.collection('users').doc(uid);
+
+
+
+            userDocument.get().then(function(doc) {
+              $('#email').val(email)
+              if (doc.exists) {
+                console.log("Document data:", doc.data());
+                $('#firstName').val(doc.data().firstName);
+                $('#lastName').val(doc.data().lastName);
+                $('#isWorker').prop('checked', doc.data().isWorker);
+                if ($('#isWorker').prop('checked')) {
+                  $('.workerCollapse').addClass('show')
+                }
+                $('#experience').val(doc.data().experience);
+                $('#subjects').selectpicker('val', doc.data().subjects);
+                $('#learningDisabilities').selectpicker('val', doc.data().learningDisabilities);
+              } else {
+                console.log("No such document!");
+              }
+              $('.container').removeClass('invisible');
+            }).catch(function(error) {
+              console.log("Error getting document:", error);
+            });
+
+
+
+            $('#userForm').submit(function(e) {
+              e.preventDefault();
+              if ($('#button').hasClass("disabled")) {
+                return;
+              }
+              $('#button').addClass('disabled');
+              $('#success').removeClass('d-block');
+              $('#success').addClass('d-none');
+              $('#danger').removeClass('d-block');
+              $('#danger').addClass('d-none');
+              $('#loading').removeClass('d-none');
+              $('#loading').addClass('d-block');
+              userDocument.set({
+                  firstName: $('#firstName').val(),
+                  lastName: $('#lastName').val(),
+                  isWorker: $('#isWorker').prop('checked'),
+                  experience: parseInt($('#experience').val()),
+                  subjects: $('#subjects').val(),
+                  learningDisabilities: $('#learningDisabilities').val(),
+                  email: email
+                })
+                .then(function() {
+                  setTimeout(function() {
+                    $('#button').removeClass('disabled');
+                    $('#loading').removeClass('d-block');
+                    $('#loading').addClass('d-none');
+                    $('#danger').removeClass('d-block');
+                    $('#danger').addClass('d-none');
+                    $('#success').removeClass('d-none');
+                    $('#success').addClass('d-block');
+                  }, 1000);
+                  console.log("Document successfully written!");
+                })
+                .catch(function(error) {
+                  $('#button').removeClass('disabled');
+                  $('#loading').removeClass('d-block');
+                  $('#loading').addClass('d-none');
+                  $('#success').removeClass('d-block');
+                  $('#success').addClass('d-none');
+                  $('#danger').removeClass('d-none');
+                  $('#danger').addClass('d-block');
+                  console.error("Error writing document: ", error);
+                });
+            });
+          } else {
+            window.location.replace('index.html');
+          }
+        }, function(error) {
+          console.log(error);
+        });
+      };
+
+      window.addEventListener('load', function() {
+        initApp();
+      });
+    </script>
+  </body>
+
+</html>

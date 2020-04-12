@@ -1,0 +1,50 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-light bg-light text-xs-center">
+    <span class="btn-group d-md-none order-1">
+      <button class="btn btn-outline-secondary toggle" type="button" data-toggle="collapse" data-target="#navbarLink" aria-controls="navbarsLink" aria-expanded="false" aria-label="Toggle Navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </span>
+    <a class="navbar-brand order-2 mx-auto" href="index.html">
+      <h1>MyKidCare</h1>
+    </a>
+    <div id="userInfo" class="order-3 order-md-5">
+
+      <div class="d-none d-signed">
+        <div class="btn-group">
+          <a href="userArea.html" class="btn btn-outline-primary">
+            Profilo
+          </a>
+          <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="userArea.html" class="dropdown-item">Profilo</a>
+            <a href="userArea.html" class="dropdown-item">Pubblica il tuo annuncio</a>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item text-danger" type="button" onclick="firebase.auth().signOut()">Logout</button>
+          </div>
+        </div>
+      </div>
+      <div class="d-none d-unsigned">
+        <div class="btn-group">
+          <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#loginModal">Login</a>
+          <a href="#" class="btn btn-outline-info d-none d-sm-block" data-toggle="modal" data-target="#loginModal">Pubblica il tuo annuncio</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapse navbar-collapse order-4" id="navbarLink">
+      <ul class="navbar-nav mr-auto ml-3 ml-lg-5">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Informazioni</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contattaci</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

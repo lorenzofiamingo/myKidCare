@@ -1,7 +1,9 @@
 $(document).ready(function() {
-  $(".toggle").click(function() {
+  $(".toggle").click(function(e) {
     if (!$($(this).data("target")).hasClass("collapsing")) {
       $(this).toggleClass("active");
+    } else {
+      e.preventDefault()
     }
   });
 

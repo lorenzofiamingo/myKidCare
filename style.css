@@ -27,3 +27,11 @@
 .min-vh-75{
   min-height: 75vh;
 }
+
+.min-vh-100{
+  min-height: 100vh;
+}
+
+.custom-select{
+background: none !important;
+}
