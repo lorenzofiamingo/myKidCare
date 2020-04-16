@@ -12,7 +12,17 @@
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
 
   <script src="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth__it.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.css"/>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.css" />
+
+  <style>
+    /* Set the size of the div element that contains the map */
+    #map {
+      height: 400px;
+      /* The height is 400 pixels */
+      width: 100%;
+      /* The width is the width of the web page */
+    }
+  </style>
 
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="Select/css/bootstrap-select.min.css">
@@ -50,70 +60,148 @@
               <div class="form-group">
                 <label for="email">Indirizzo email</label>
                 <input type="email" class="form-control" id="email" placeholder="Email">
-                <small id="emailHelp" class="form-text text-muted">Indirizzo email non verificato. <a href="#">Reinvia mail di conferma</a></small>
+                <small class="form-text text-muted">Indirizzo email non verificato. <a href="#">Reinvia mail di conferma</a></small>
               </div>
             </fieldset>
-            <div class="custom-control custom-switch pb-5">
+            <div class="custom-control custom-switch pb-3">
               <input id="isWorker" type="checkbox" class="custom-control-input toggle" data-toggle="collapse" data-target=".workerCollapse">
               <label class="custom-control-label" for="isWorker">Voglio pubblicare i miei annunci</label>
             </div>
-            <div class="collapse workerCollapse">
-              <fieldset>
-                <div class="form-group">
-                  <label for="experience">Anni di esperirenza</label>
-                  <input type="number" class="form-control" id="experience" min="0" max="99" placeholder="0">
-                </div>
-                <div class="form-group">
-                  <label for="subjects">Materie</label> <br>
-                  <select id="subjects" class="form-control selectpicker" data-live-search="true" data-actions-box="true" data-style="custom-select" multiple>
-                    <optgroup label="Materie Scientifiche">
-                      <option>Matematica</option>
-                      <option>Scienze</option>
-                      <option>Informatica</option>
-                    </optgroup>
-                    <optgroup label="Materie Umanistiche">
-                      <option>Italiano</option>
-                      <option>Storia</option>
-                      <option>Geografia</option>
-                    </optgroup>
-                    <optgroup label="Lingue Straniere">
-                      <option>Inglese</option>
-                      <option>Francese</option>
-                      <option>Spagnolo</option>
-                      <option>Tedesco</option>
-                      <option>Russo</option>
-                      <option>Cinese</option>
-                    </optgroup>
-                  </select>
-                </div>
-                <div class="form-group mb-5">
-                  <label for="learningDisabilities">Competenza con ragazzi con disturbi dell'apprendimento</label> <br>
-                  <select id="learningDisabilities" class="form-control selectpicker" data-style="custom-select" multiple>
-                    <option>Dislessia</option>
-                    <option>Discalculia</option>
-                    <option>Disgrafia</option>
-                    <option>Anaritmia</option>
-                  </select>
-                </div>
-              </fieldset>
-            </div>
             <div class="container">
               <div class="row">
-                <button id="button" type="submit" class="btn btn-primary">Salva</button>
+                <button id="userFormButton" type="submit" class="btn btn-primary">Salva</button>
                 <div class="ml-3 my-auto">
-                  <h5 id="loading" class="d-none my-auto text-secondary"><i class="fas fa-sync fa-spin"></i></h5>
-                  <h5 id="success" class="d-none my-auto text-success"><i class="fas fa-check-circle"></i></h5>
-                  <h5 id="danger" class="d-none my-auto text-danger"><i class="fas fa-exclamation-circle"></i></h5>
+                  <h5 id="userFormLoading" class="d-none my-auto text-secondary"><i class="fas fa-sync fa-spin"></i></h5>
+                  <h5 id="userFormSuccess" class="d-none my-auto text-success"><i class="fas fa-check-circle"></i></h5>
+                  <h5 id="userFormDanger" class="d-none my-auto text-danger"><i class="fas fa-exclamation-circle"></i></h5>
                 </div>
               </div>
             </div>
           </form>
+          <!-- INSERTIONS -->
           <div class="collapse workerCollapse">
             <h3 class="mt-5">I tuoi annunci</h3>
+            <p class="text-muted">Nessun annucio pubblicato</p>
             <div class="row">
               <div class="col-3 my-3 d-none d-md-block">
               </div>
             </div>
+            <div class="container">
+              <div class="row">
+                <div id="insertionFormAddButtonWrapper" class="collapse show">
+                  <button id="insertionFormAddButton" class="btn btn-primary">Aggiungi annuncio</button>
+                </div>
+              </div>
+            </div>
+            <div id="insertionFormWrapper" class="collapse show">
+              <form id="insertionForm" action="index.html" method="post">
+                <h4>Nuovo annuncio</h4>
+                <fieldset>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="isBabysitter" value="option1" checked>
+                      <label class="form-check-label" for="isBabysitter">Babysitter</label>
+                      <small class="d-inline form-text text-muted"> Intrattiene il bambino</small>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="isTeacher" value="option2">
+                      <label class="form-check-label" for="isTeacher">Maestro privato</label>
+                      <small class="d-inline form-text text-muted"> Intrattiene il bambino e impartisce lezioni private nelle materie selezionate</small>
+                    </div>
+                    <div class="form-check disabled">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="isNanny" value="option3">
+                      <label class="form-check-label" for="isNanny">Tata</label>
+                      <small class="d-inline form-text text-muted"> Intrattiene il bambino, impartisce lezioni private nelle materie selezionate e svolge i servizi complementari selezionati</small>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="experience">Anni di esperirenza</label>
+                    <input type="number" class="form-control" id="experience" min="0" max="99" placeholder="0">
+                  </div>
+                  <div class="form-group">
+                    <label for="learningDisabilities">Competenza con ragazzi con disturbi dell'apprendimento</label> <br>
+                    <select id="learningDisabilities" class="form-control selectpicker" data-style="custom-select" multiple>
+                      <option>Dislessia</option>
+                      <option>Discalculia</option>
+                      <option>Disgrafia</option>
+                      <option>Anaritmia</option>
+                    </select>
+                  </div>
+                  <div id="teacher" class="collapse">
+                    <div class="form-group">
+                      <label for="subjects">Materie</label> <br>
+                      <select id="subjects" class="form-control selectpicker" data-live-search="true" data-actions-box="true" data-style="custom-select" multiple>
+                        <optgroup label="Materie Scientifiche">
+                          <option>Matematica</option>
+                          <option>Scienze</option>
+                          <option>Informatica</option>
+                        </optgroup>
+                        <optgroup label="Materie Umanistiche">
+                          <option>Italiano</option>
+                          <option>Storia</option>
+                          <option>Geografia</option>
+                        </optgroup>
+                        <optgroup label="Lingue Straniere">
+                          <option>Inglese</option>
+                          <option>Francese</option>
+                          <option>Spagnolo</option>
+                          <option>Tedesco</option>
+                          <option>Russo</option>
+                          <option>Cinese</option>
+                        </optgroup>
+                      </select>
+                    </div>
+                  </div>
+                  <div id="nanny" class="collapse">
+                    <div class="form-group">
+                      <label for="chores">Lavori domestici</label> <br>
+                      <select id="chores" class="form-control selectpicker" data-actions-box="true" data-style="custom-select" multiple>
+                        <option>Lavare i piatti</option>
+                        <option>Pulire la casa</option>
+                        <option>Lavare i panni</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="chore">Zona di lavoro</label>
+                    <small class="d-inline form-text text-muted">Solo i clienti che si trovano in questa zona visualizeranno il tuo annuncio</small><br>
+                    <div class="" id="">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <button id="geolocator" class="btn btn-primary" type="button"><i class="fas fa-crosshairs"></i></button>
+                        </div>
+                        <input id="autocomplete" type="text" class="form-control" placeholder="Indirizzo">
+                        <div class="input-group-append">
+                          <button id="rect" class="btn btn-sm btn-outline-secondary" type="button">Disegna area</button>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <input id="north" type="text" class="form-control" placeholder="north" required disabled>
+                        <input id="south" type="text" class="form-control" placeholder="south" required disabled>
+                        <input id="west" type="text" class="form-control" placeholder="west" required disabled>
+                        <input id="east" type="text" class="form-control" placeholder="east" required disabled>
+                      </div>
+                    </div>
+                    <div class="card mt-2 mb-4" style="height: 400px;">
+                      <div id="map" style="height: 100%; width: 100%;"></div>
+                    </div>
+                  </div>
+                </fieldset>
+                <div class="container">
+                  <div class="row">
+                    <div class="btn-group">
+                      <button id="insertionFormButton" type="submit" class="btn btn-primary">Pubblica l'annuncio</button>
+                      <button id="insertionFormCancelButton" type="reset" class="btn btn-outline-secondary">Annulla</button>
+                    </div>
+                    <div class="ml-3 my-auto">
+                      <h5 id="insertionFormLoading" class="d-none my-auto text-secondary"><i class="fas fa-sync fa-spin"></i></h5>
+                      <h5 id="insertionFormSuccess" class="d-none my-auto text-success"><i class="fas fa-check-circle"></i></h5>
+                      <h5 id="insertionFormDanger" class="d-none my-auto text-danger"><i class="fas fa-exclamation-circle"></i></h5>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -179,10 +267,11 @@
             $("#loginClose").trigger("click");
             var db = firebase.firestore();
             var userDocument = db.collection('users').doc(uid);
-
-
+            var insertionCollection = userDocument.collection('insertions');
 
             userDocument.get().then(function(doc) {
+
+              //POPULATE FORMS
               $('#email').val(email)
               if (doc.exists) {
                 console.log("Document data:", doc.data());
@@ -190,11 +279,11 @@
                 $('#lastName').val(doc.data().lastName);
                 $('#isWorker').prop('checked', doc.data().isWorker);
                 if ($('#isWorker').prop('checked')) {
-                  $('.workerCollapse').addClass('show')
+                  $('.workerCollapse').addClass('show');
                 }
-                $('#experience').val(doc.data().experience);
-                $('#subjects').selectpicker('val', doc.data().subjects);
-                $('#learningDisabilities').selectpicker('val', doc.data().learningDisabilities);
+                //$('#experience').val(doc.data().experience);
+                //$('#subjects').selectpicker('val', doc.data().subjects);
+                //$('#learningDisabilities').selectpicker('val', doc.data().learningDisabilities);
               } else {
                 console.log("No such document!");
               }
@@ -207,20 +296,64 @@
 
             $('#userForm').submit(function(e) {
               e.preventDefault();
-              if ($('#button').hasClass("disabled")) {
+              if ($('#userFormButton').hasClass("disabled")) {
                 return;
               }
-              $('#button').addClass('disabled');
-              $('#success').removeClass('d-block');
-              $('#success').addClass('d-none');
-              $('#danger').removeClass('d-block');
-              $('#danger').addClass('d-none');
-              $('#loading').removeClass('d-none');
-              $('#loading').addClass('d-block');
+              $('#userFormButton').addClass('disabled');
+              $('#userFormSuccess').removeClass('d-block');
+              $('#userFormSuccess').addClass('d-none');
+              $('#userFormDanger').removeClass('d-block');
+              $('#userFormDanger').addClass('d-none');
+              $('#userFormLoading').removeClass('d-none');
+              $('#userFormLoading').addClass('d-block');
               userDocument.set({
                   firstName: $('#firstName').val(),
                   lastName: $('#lastName').val(),
                   isWorker: $('#isWorker').prop('checked'),
+                  //email: email
+                })
+                .then(function() {
+                  setTimeout(function() {
+                    $('#userFormButton').removeClass('disabled');
+                    $('#userFormLoading').removeClass('d-block');
+                    $('#userFormLoading').addClass('d-none');
+                    $('#userFormDanger').removeClass('d-block');
+                    $('#userFormDanger').addClass('d-none');
+                    $('#userFormSuccess').removeClass('d-none');
+                    $('#userFormSuccess').addClass('d-block');
+                  }, 1000);
+                  console.log("Document successfully written!");
+                })
+                .catch(function(error) {
+                  $('#userFormButton').removeClass('disabled');
+                  $('#userFormLoading').removeClass('d-block');
+                  $('#userFormLoading').addClass('d-none');
+                  $('#userFormSuccess').removeClass('d-block');
+                  $('#userFormSuccess').addClass('d-none');
+                  $('#userFormDanger').removeClass('d-none');
+                  $('#userFormDanger').addClass('d-block');
+                  console.error("Error writing document: ", error);
+                });
+            });
+
+
+            $('#insertionForm').submit(function(e) {
+              var insertionDocument = insertionCollection.doc();
+              e.preventDefault();
+              if ($('#insertionFormButton').hasClass("disabled")) {
+                return;
+              }
+              $('#insertionFormButton').addClass('disabled');
+              $('#insertionFormSuccess').removeClass('d-block');
+              $('#insertionFormSuccess').addClass('d-none');
+              $('#insertionFormDanger').removeClass('d-block');
+              $('#insertionFormDanger').addClass('d-none');
+              $('#insertionFormLoading').removeClass('d-none');
+              $('#insertionFormLoading').addClass('d-block');
+              insertionDocument.set({
+                  isBabysitter: $('#isBabysitter').prop('checked'),
+                  isTeacher: $('#isTeacher').prop('checked'),
+                  isNanny: $('#isNanny').prop('checked'),
                   experience: parseInt($('#experience').val()),
                   subjects: $('#subjects').val(),
                   learningDisabilities: $('#learningDisabilities').val(),
@@ -228,27 +361,33 @@
                 })
                 .then(function() {
                   setTimeout(function() {
-                    $('#button').removeClass('disabled');
-                    $('#loading').removeClass('d-block');
-                    $('#loading').addClass('d-none');
-                    $('#danger').removeClass('d-block');
-                    $('#danger').addClass('d-none');
-                    $('#success').removeClass('d-none');
-                    $('#success').addClass('d-block');
+                    $('#insertionFormButton').removeClass('disabled');
+                    $('#insertionFormLoading').removeClass('d-block');
+                    $('#insertionFormLoading').addClass('d-none');
+                    $('#insertionFormDanger').removeClass('d-block');
+                    $('#insertionFormDanger').addClass('d-none');
+                    $('#insertionFormSuccess').removeClass('d-none');
+                    $('#insertionFormSuccess').addClass('d-block');
+                    setTimeout(function() { //TRIGGER THIS 3 FUNCTIONS WHEN THE INSERTION è caricata tra le inserzioni dell'utente
+                      $("#insertionFormWrapper").collapse('hide');
+                      $("#insertionFormAddButtonWrapper").collapse('show');
+                      $('#insertionForm').trigger("reset");
+                    }, 1000);
                   }, 1000);
                   console.log("Document successfully written!");
                 })
                 .catch(function(error) {
-                  $('#button').removeClass('disabled');
-                  $('#loading').removeClass('d-block');
-                  $('#loading').addClass('d-none');
-                  $('#success').removeClass('d-block');
-                  $('#success').addClass('d-none');
-                  $('#danger').removeClass('d-none');
-                  $('#danger').addClass('d-block');
+                  $('#insertionFormButton').removeClass('disabled');
+                  $('#insertionFormLoading').removeClass('d-block');
+                  $('#insertionrFormLoading').addClass('d-none');
+                  $('#insertionFormSuccess').removeClass('d-block');
+                  $('#insertionFormSuccess').addClass('d-none');
+                  $('#insertionFormDanger').removeClass('d-none');
+                  $('#insertionFormDanger').addClass('d-block');
                   console.error("Error writing document: ", error);
                 });
             });
+
           } else {
             window.location.replace('index.html');
           }
@@ -260,7 +399,172 @@
       window.addEventListener('load', function() {
         initApp();
       });
+
+      $("#isBabysitter").click(function() {
+        $("#teacher").collapse('hide');
+        $("#nanny").collapse('hide');
+      });
+
+      $("#isTeacher").click(function() {
+        $("#teacher").collapse('show');
+        $("#nanny").collapse('hide');
+      });
+
+      $("#isNanny").click(function() {
+        $("#teacher").collapse('show');
+        $("#nanny").collapse('show');
+      });
+
+      $("#insertionFormAddButton").click(function() {
+        $("#insertionFormWrapper").collapse('show');
+        $("#insertionFormAddButtonWrapper").collapse('hide');
+      });
+
+      $("#insertionFormCancelButton").click(function(e) {
+        e.preventDefault();
+        $("#insertionFormWrapper").collapse('hide');
+        $("#insertionFormAddButtonWrapper").collapse('show');
+      });
     </script>
+
+    <script>
+      function initMap() {
+        var map;
+        var latlng = new google.maps.LatLng(49.241943, -122.889318);
+        var myOptions = {
+          zoom: 12,
+          center: latlng,
+          mapTypeControl: false,
+          streetViewControl: false,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+        var drawingStyle = {
+          strokeWeight: 0,
+          fillOpacity: 0.45,
+          editable: true,
+          draggable: true,
+          strokeColor: '#FF82E3',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#FF82E3',
+          fillOpacity: 0.35
+        };
+        var drawingManager = new google.maps.drawing.DrawingManager({
+
+          drawingControl: false,
+          drawingControlOptions: {
+            position: google.maps.ControlPosition.TOP_CENTER,
+            drawingModes: [
+              "rectangle",
+            ]
+          },
+          rectangleOptions: drawingStyle,
+          map: map
+        });
+
+        drawingManager.setMap(map);
+
+        var rectangle = new google.maps.Rectangle(drawingStyle);
+        rectangle.setMap(map);
+        rectangle.addListener('bounds_changed', function() {
+          var rectPath = [];
+          var ne = rectangle.getBounds().getNorthEast();
+          var sw = rectangle.getBounds().getSouthWest();
+          $('#north').val(ne.lat());
+          $('#south').val(sw.lat());
+          $('#west').val(sw.lng());
+          $('#east').val(ne.lng());
+        });
+
+        google.maps.event.addListener(drawingManager, 'rectanglecomplete', function(rect) {
+          drawingManager.setDrawingMode(null);
+          rect.setMap(null);
+          rectangle.setBounds(rect.getBounds())
+        });
+
+        $('#rect').click(function(e) {
+          drawingManager.setDrawingMode("rectangle");
+        });
+
+
+        var placeSearch, autocomplete;
+        var componentForm = {
+          street_number: 'short_name',
+          route: 'long_name',
+          locality: 'long_name',
+          administrative_area_level_1: 'short_name',
+          country: 'long_name',
+          postal_code: 'short_name'
+        };
+        autocomplete = new google.maps.places.Autocomplete(
+          (document.getElementById('autocomplete')), {
+            types: ['geocode']
+          });
+
+        autocomplete.addListener('place_changed', function() {
+          var place = autocomplete.getPlace();
+          if (!place.geometry) {
+            window.alert("Nessuna informazione su: '" + place.name + "', devi selezionare un indirizzo tra quelli consigliati.");
+            return;
+          }
+          if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+            rectangle.setBounds(place.geometry.viewport);
+          } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(17); // Why 17? Because it looks good.
+          }
+        });
+
+        $("#geolocator").click(function(e) {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+              var geolocation = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+              var circle = new google.maps.Circle({
+                center: geolocation,
+                radius: position.coords.accuracy
+              });
+              autocomplete.setBounds(circle.getBounds());
+              var bounds = {
+                north: position.coords.latitude + 0.012,
+                south: position.coords.latitude - 0.012,
+                east: position.coords.longitude + 0.018,
+                west: position.coords.longitude - 0.018
+              };
+              rectangle.setBounds(bounds);
+              map.fitBounds(bounds);
+            });
+          }
+        });
+      };
+      if (!navigator.geolocation) {
+        $("#geolocator").addClass('d-none')
+      }
+
+      $(function() {
+        var keyStop = {
+          8: ":not(input:text, textarea, input:file, input:password)", // stop backspace = back
+          13: "input:text, input:password", // stop enter = submit
+
+          end: null
+        };
+        $(document).bind("keydown", function(event) {
+          var selector = keyStop[event.which];
+
+          if (selector !== undefined && $(event.target).is(selector)) {
+            event.preventDefault(); //stop event
+          }
+          return true;
+        });
+      });
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYa9UYRHffbtkD9g5BwPxjLE9Y4TSgxTQ&libraries=drawing,places&callback=initMap" type="text/javascript"></script>
   </body>
 
 </html>
