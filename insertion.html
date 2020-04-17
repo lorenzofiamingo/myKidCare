@@ -15,9 +15,12 @@
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.css" />
 
   <style>
+    /* Set the size of the div element that contains the map */
     #map {
       height: 400px;
+      /* The height is 400 pixels */
       width: 100%;
+      /* The width is the width of the web page */
     }
   </style>
 
@@ -411,73 +414,69 @@
             window.location.replace('index.html');
           }
 
-          function renderInsertion(doc) {
-            let card = $('<div></div>');
-            card.addClass('card shadow-sm');
-            //card.attr('data-id', doc.id);
+            function renderInsertion(doc) {
+              let card = $('<div></div>');
+              card.addClass('card shadow-sm');
+              //card.attr('data-id', doc.id);
 
-            let image = $('<img></img>');
-            image.addClass('card-img-top');
-            image.attr('src', "http://v.bootstrapmb.com/2017/12/ffg8t333/Bootstrap-3.3.7_horizontal/assets/images/users/avatar-1.jpg");
+              let image = $('<img></img>');
+              image.addClass('card-img-top');
+              image.attr('src', "http://v.bootstrapmb.com/2017/12/ffg8t333/Bootstrap-3.3.7_horizontal/assets/images/users/avatar-1.jpg");
 
-            let title = $('<div></div>');
-            title.addClass('d-flex justify-content-between')
+              let title = $('<div></div>');
+              title.addClass('d-flex justify-content-between')
 
-            let body = $('<div></div>');
-            body.addClass('card-body')
+              let body = $('<div></div>');
+              body.addClass('card-body')
 
-            let type = $('<h5></h5>');
-            type.addClass('card-title');
-            if (doc.data().isBabysitter) {
-              type.text('Babysitter');
-            } else if (doc.data().isTeacher) {
-              type.text('Insegnante');
-            } else if (doc.data().isNanny) {
-              type.text('Tata');
+              let type = $('<h5></h5>');
+              type.addClass('card-title');
+              if (doc.data().isBabysitter) {
+                type.text('Babysitter');
+              } else if (doc.data().isTeacher) {
+                type.text('Insegnante');
+              } else if (doc.data().isNanny) {
+                type.text('Tata');
+              }
+
+              let presentation = $('<p></p>');
+              if (doc.data().presentation.length > 74) {
+                presentation.text(doc.data().presentation.substr(0, 75) + '...');
+              } else {
+                presentation.text(doc.data().presentation);
+              }
+
+              let price = $('<small></small>');
+              price.addClass('text-muted float-left');
+              price.text(doc.data().price + " €/ora");
+
+              let buttonGroup = $('<div></div>');
+              buttonGroup.addClass('btn-group d-flex justify-content-center');
+
+              let modifyButton = $('<button></button>');
+              modifyButton.addClass('btn btn-sm btn-outline-primary');
+              modifyButton.text("Modifica");
+
+              let deleteButton = $('<button></button>');
+              deleteButton.addClass('btn btn-sm btn-outline-danger');
+              deleteButton.text("Elimina");
+
+              card.append(image);
+              card.append(body);
+              body.append(title);
+              body.append(presentation);
+              body.append(buttonGroup);
+              title.append(type);
+              title.append(price);
+              buttonGroup.append(modifyButton);
+              buttonGroup.append(deleteButton);
+              $('#insertions').append(card);
+
+              deleteButton.click(function(e){
+                //let id = e.target.parentElement.getAttribute('data-id');
+                insertionCollection.doc(doc.id).delete();
+              });
             }
-
-            let presentation = $('<p></p>');
-            if (doc.data().presentation.length > 74) {
-              presentation.text(doc.data().presentation.substr(0, 75) + '...');
-            } else {
-              presentation.text(doc.data().presentation);
-            }
-
-            let price = $('<small></small>');
-            price.addClass('text-muted float-left');
-            price.text(doc.data().price + " €/ora");
-
-            let buttonGroup = $('<div></div>');
-            buttonGroup.addClass('btn-group d-flex justify-content-center');
-
-            let modifyButton = $('<button></button>');
-            modifyButton.addClass('btn btn-sm btn-outline-primary');
-            modifyButton.text("Modifica");
-
-            let deleteButton = $('<button></button>');
-            deleteButton.addClass('btn btn-sm btn-outline-danger');
-            deleteButton.text("Elimina");
-
-            card.append(image);
-            card.append(body);
-            body.append(title);
-            body.append(presentation);
-            body.append(buttonGroup);
-            title.append(type);
-            title.append(price);
-            buttonGroup.append(modifyButton);
-            buttonGroup.append(deleteButton);
-            $('#insertions').append(card);
-
-            deleteButton.click(function(e) {
-              //let id = e.target.parentElement.getAttribute('data-id');
-              insertionCollection.doc(doc.id).delete();
-            });
-            modifyButton.click(function(e) {
-              let url = "insertion.html?id=" + doc.id
-              window.location.href = url;
-            });
-          }
         }, function(error) {
           console.log(error);
         });
